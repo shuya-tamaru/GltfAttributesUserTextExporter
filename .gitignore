@@ -1,0 +1,18 @@
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+TestResults
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
