@@ -6,6 +6,7 @@
     <Title>GltfAttributesExporter</Title>
     <Description>Description of GltfAttributesExporter</Description>
     <TargetExt>.rhp</TargetExt>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,8 +14,10 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="AssetRipper.SharpGLTF.Core" Version="1.0.2" />
+    <PackageReference Include="AssetRipper.SharpGLTF.Toolkit" Version="1.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RhinoCommon" Version="8.6.24101.5001" IncludeAssets="compile;build" />
-    <PackageReference Include="SharpGltfTileExt" Version="0.0.9" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
   </ItemGroup>
