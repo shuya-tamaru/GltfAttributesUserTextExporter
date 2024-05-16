@@ -2,20 +2,23 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
 using Rhino;
 using Rhino.Commands;
 using Rhino.DocObjects;
 using Rhino.Geometry;
-using Rhino.Input.Custom;
 using RHINOMESH = Rhino.Geometry.Mesh;
+
 using SharpGLTF.Geometry.VertexTypes;
+using SharpGLTF.Geometry;
 using SharpGLTF.Materials;
 using SharpGLTF.Scenes;
+
 using GltfAttributesExporter.Export;
 using GltfAttributesExporter.Utilities;
 using GltfAttributesExporter.Models;
+
 using System.Numerics;
-using SharpGLTF.Geometry;
 using System.Text.Json.Nodes;
 
 namespace GltfAttributesExporter
@@ -44,18 +47,7 @@ namespace GltfAttributesExporter
         {
 
             // select objects
-            var geometry = new GetObject();
-            geometry.SetCommandPrompt("Select objects to mesh");
-            geometry.GeometryFilter = ObjectType.Mesh | ObjectType.Brep;
-            geometry.SubObjectSelect = false;
-            geometry.GroupSelect = true;
-            geometry.GetMultiple(1, 0);
-
-            if (geometry.CommandResult() != Result.Success)
-            {
-                Rhino.RhinoApp.WriteLine("An error occurred: " + geometry.CommandResult().ToString());
-                return geometry.CommandResult();
-            }
+            var selectedGeometries = ObjectSelector.SelectObjects("Select objects to mesh");
 
             // save file dialog
             var saveFileDialog = new SaveFileDialog
@@ -86,7 +78,7 @@ namespace GltfAttributesExporter
 
             // compile mesh data
             var meshData = new List<MeshData>();
-            foreach (var objRef in geometry.Objects())
+            foreach (var objRef in selectedGeometries.Objects())
             {
                 try
                 {
@@ -102,6 +94,7 @@ namespace GltfAttributesExporter
                         var brep = objRef.Brep();
                         if (!brep.IsValid)
                         {
+                            Rhino.RhinoApp.WriteLine("This Brep is Invalid, skip to export: guid =>" + objRef.ObjectId.ToString());
                             continue;
                         }
                         var brepMeshes = RHINOMESH.CreateFromBrep(brep, meshConvertSettings);
@@ -117,6 +110,7 @@ namespace GltfAttributesExporter
 
                     if (mesh == null || !mesh.IsValid)
                     {
+                        Rhino.RhinoApp.WriteLine("This object is not a valid mesh or brep: guid =>" + objRef.ObjectId.ToString());
                         continue;
                     }
 
@@ -240,13 +234,11 @@ namespace GltfAttributesExporter
             }
             else if (Path.GetExtension(saveFilePath).Equals(".gltf", StringComparison.OrdinalIgnoreCase))
             {
-
                 //merge bin file to one buffer
                 var writeSettings = new SharpGLTF.Schema2.WriteSettings
                 {
                     MergeBuffers = true,
-                    JsonIndented = true,
-                    BuffersMaxSize = 1_074_000_000,
+                    JsonIndented = true
                 };
 
                 model.SaveGLTF(saveFilePath, writeSettings);
@@ -264,3 +256,4 @@ namespace GltfAttributesExporter
 
     }
 }
+ 
