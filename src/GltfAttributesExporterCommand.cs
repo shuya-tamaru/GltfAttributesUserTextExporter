@@ -85,10 +85,12 @@ namespace GltfAttributesExporter
             Rhino.RhinoApp.WriteLine("Please waiting...");
 
             // compile mesh data
-           var meshData = new List<MeshData>();
+            var meshData = new List<MeshData>();
             foreach (var objRef in geometry.Objects())
             {
-                try {
+                try
+                {
+
                     // Convert Brep to Mesh
                     RHINOMESH mesh = null;
                     if (objRef.Mesh() != null)
@@ -118,6 +120,9 @@ namespace GltfAttributesExporter
                         continue;
                     }
 
+                    //get layer id
+                    var layerIndex = objRef.Object().Attributes.LayerIndex;
+
                     // Get Material
                     var rhinoMaterial = defaultMaterial;
                     if (objRef.Object().Attributes.MaterialSource == ObjectMaterialSource.MaterialFromObject)
@@ -126,7 +131,6 @@ namespace GltfAttributesExporter
                     }
                     else if (objRef.Object().Attributes.MaterialSource == ObjectMaterialSource.MaterialFromLayer)
                     {
-                        var layerIndex = objRef.Object().Attributes.LayerIndex;
                         var layer = doc.Layers[layerIndex];
                         if (layer.RenderMaterialIndex >= 0)
                         {
@@ -147,7 +151,7 @@ namespace GltfAttributesExporter
                     //Add MeshWithUserData to list
                     if (mesh != null && rhinoMaterial != null)
                     {
-                        meshData.Add(new MeshData(mesh, userAttributes, rhinoMaterial));
+                        meshData.Add(new MeshData(mesh, userAttributes, rhinoMaterial, layerIndex));
                     }
                 }
                 catch (Exception ex)
@@ -165,6 +169,7 @@ namespace GltfAttributesExporter
             {
                 //Scale Mesh to webgl size
                 RHINOMESH rhinoMesh = item.Mesh;
+                var layerIndex = item.LayerIndex;
                 var scaleTransform = Rhino.Geometry.Transform.Scale(Point3d.Origin, scaleFactor);
                 rhinoMesh.Transform(scaleTransform);
 
@@ -214,7 +219,17 @@ namespace GltfAttributesExporter
                     meshBuilder.Extras = jsonObject;
                 }
 
-                sceneBuilder.AddRigidMesh(meshBuilder, Matrix4x4.Identity);
+                if (groupByLayer)
+                {
+                    // Find or create node for the layer
+                    var layer = doc.Layers[layerIndex];
+                    var node =LayerNodeHelper.GetOrCreateLayerNode(sceneBuilder, layer);
+                    sceneBuilder.AddRigidMesh(meshBuilder, node, Matrix4x4.Identity);
+                }
+                else
+                {
+                    sceneBuilder.AddRigidMesh(meshBuilder, Matrix4x4.Identity);
+                }
             }
 
             //export model
@@ -234,7 +249,7 @@ namespace GltfAttributesExporter
                     BuffersMaxSize = 1_074_000_000,
                 };
 
-                model.SaveGLTF(saveFilePath,writeSettings);
+                model.SaveGLTF(saveFilePath, writeSettings);
             }
             else
             {
@@ -246,5 +261,6 @@ namespace GltfAttributesExporter
 
             return Result.Success;
         }
+
     }
 }

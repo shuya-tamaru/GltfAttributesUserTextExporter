@@ -17,7 +17,7 @@ namespace GltfAttributesExporter.Models
 
             return new VertexBuilder<VertexPositionNormal, VertexTexture1, VertexEmpty>(
                 new VertexPositionNormal(position.X, position.Z, -position.Y, normal.X, normal.Z, -normal.Y),
-                new VertexTexture1(new Vector2(uv.X, uv.Y))
+                new VertexTexture1(new Vector2(uv.X, 1.0f - uv.Y))
             );
         }
     }

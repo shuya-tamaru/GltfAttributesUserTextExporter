@@ -11,11 +11,14 @@ namespace GltfAttributesExporter.Models
         public List<UserAttribute> UserAttributes { get; set; }
         public Material RhinoMaterial { get; set; }
 
-        public MeshData(RHINOMESH mesh, List<UserAttribute> userAttributes, Material rhinoMaterial)
+        public int LayerIndex { get; set; }
+
+        public MeshData(RHINOMESH mesh, List<UserAttribute> userAttributes, Material rhinoMaterial, int layerIndex)
         {
             Mesh = mesh;
             UserAttributes = userAttributes;
             RhinoMaterial = rhinoMaterial;
+            LayerIndex = layerIndex;
         }
     }
 }
