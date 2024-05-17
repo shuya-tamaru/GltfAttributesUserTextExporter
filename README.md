@@ -28,8 +28,25 @@ The plugin has been tested and confirmed to work with:
 4. Your model will be exported in gltf/glb format with all user text attributes included.
 
 ## :cinema: Viewing Exported Models
+#### You can check the exported models using the following viewers:
 
-You can view the exported models on our upcoming [website](#) (link to be updated).
+- Link to the viewer: [Three.js (React Three Fiber) Viewer](https://threejs.org/editor/)
+
+    [![](https://img.shields.io/badge/-Three.js-000000.svg?logo=threedotjs)](https://your-threejs-viewer-link.com)
+[![](https://img.shields.io/badge/-ReactThreeFiber-000000.svg?logo=react)](https://your-threejs-viewer-link.com)  
+
+
+
+
+- Link to the viewer: [Babylon.js Viewer](https://threejs.org/editor/)
+
+    [<img src="https://doc.babylonjs.com/img/home/babylonjs_identity_color.png" alt="Babylon.js" height="30">](https://your-babylonjs-viewer-link.com)  
+
+- Link to the viewer: [PlayCanvas Viewer](https://threejs.org/editor/)
+
+    [![](https://img.shields.io/badge/-PlayCanvas-000000.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
+
+
 
 ## :record_button: Documentation
 
