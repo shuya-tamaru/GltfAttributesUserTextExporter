@@ -13,10 +13,10 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 - :x: **Export Point Cloud.**
 - :x: **Export VertexColor.**
 
-### :sunglasses: **Check** 
+### :sunglasses: **Note** 
 - If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, we found that some of them may cause attribute loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
 
-Sample Code Repository 🚀
+   => [Sample Code Draco Compression using gltf-pipeline](https://github.com/shuya-tamaru/gltf-draco-compression) 🚀
 
 
 
@@ -38,30 +38,33 @@ The plugin has been tested and confirmed to work with:
 3. In Rhinoceros, enter the command `GltfAttributesExport`.
 4. Your model will be exported in gltf/glb format with all user text attributes included.
 
-## :cinema: Viewing Exported Models
- You can check the exported models using the following viewers:
+## 🎦 Viewing Exported Models
+You can check the exported models using the following viewers:
 
-- Link to the viewer: [Three.js (React Three Fiber) Viewer](https://threejs.org/editor/)
+[![](https://img.shields.io/badge/-Three.js-ffffff.svg?logo=threedotjs&logoColor=000000)](https://your-threejs-viewer-link.com)
+[![](https://img.shields.io/badge/-ReactThreeFiber-444444.svg?logo=react)](https://your-threejs-viewer-link.com)
+[![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://github.com/playcanvas/engine)
+[![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
 
-    [![](https://img.shields.io/badge/-Three.js-000000.svg?logo=threedotjs)](https://your-threejs-viewer-link.com)
-[![](https://img.shields.io/badge/-ReactThreeFiber-000000.svg?logo=react)](https://your-threejs-viewer-link.com)  
+### Three.js (React Three Fiber) Viewer
+- Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute information assigned to each geometry in Rhinoceros.
+- For example, if you export a building model and want to enable a walkthrough in this viewer, set the attribute `key = isWalking` and `value = true` to the geometry you want to walk through in Rhinoceros. This will allow you to walk through that object in the viewer.
 
+### Babylon.js Viewer
+- This viewer allows you to view the model using an orbit camera.
+- Each Mesh's `Metadata` contains the attribute information assigned in Rhinoceros.
 
+### PlayCanvas Viewer
+- [Details to be added later.]
 
+You can use the developer tools to check the loaded model in the console for all viewers.
 
-- Link to the viewer: [Babylon.js Viewer](https://threejs.org/editor/)
+---
 
-    [<img src="https://doc.babylonjs.com/img/home/babylonjs_identity_color.png" alt="Babylon.js" height="30">](https://your-babylonjs-viewer-link.com)  
-
-- Link to the viewer: [PlayCanvas Viewer](https://threejs.org/editor/)
-
-    [![](https://img.shields.io/badge/-PlayCanvas-000000.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
-
-
-
-## :record_button: Documentation
-
-Official documentation is available at our upcoming [Docs](#) (link to be updated).
+Links to the viewers:
+- [Three.js (React Three Fiber) Viewer](#)
+- [Babylon.js Viewer](#)
+- [PlayCanvas Viewer](#)
 
 ## :arrow_down: Contact
 
