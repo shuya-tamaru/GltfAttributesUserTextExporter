@@ -46,18 +46,19 @@ You can check the exported models using the following viewers:
 [![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://github.com/playcanvas/engine)
 [![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
 
-### Three.js (React Three Fiber) Viewer
+ ### :one: Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute information assigned to each geometry in Rhinoceros.
 - For example, if you export a building model and want to enable a walkthrough in this viewer, set the attribute `key = isWalking` and `value = true` to the geometry you want to walk through in Rhinoceros. This will allow you to walk through that object in the viewer.
 
-### Babylon.js Viewer
+### :two: Babylon.js Viewer
 - This viewer allows you to view the model using an orbit camera.
 - Each Mesh's `Metadata` contains the attribute information assigned in Rhinoceros.
 
-### PlayCanvas Viewer
+### :three: PlayCanvas Viewer
 - [Details to be added later.]
 
-You can use the developer tools to check the loaded model in the console for all viewers.
+### :eyes:For All Viewers
+- You can use the `developer tools` to check the loaded model in the console for all viewers.
 
 ---
 
@@ -76,4 +77,8 @@ or contact at ↓
 
 ---
 
-Thank you for using GLTFAttributeExporter!
+<div align="center">
+
+## :sun_with_face: Enjoy using GLTFAttributeExporter ! :full_moon_with_face:
+</div>
+
