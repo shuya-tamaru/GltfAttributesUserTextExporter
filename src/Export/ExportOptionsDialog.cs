@@ -7,12 +7,10 @@ namespace GltfAttributesExporter.Export
     public class ExportOptionsDialog : Form
     {
         public bool GroupByLayer { get; private set; }
-        public bool UseDracoCompression { get; private set; }
-        public int CompressionLevel { get; private set; }
+        public bool VertexColorExport { get; private set; }
 
         private CheckBox groupByLayerCheckBox;
-        private CheckBox useDracoCompressionCheckBox;
-        private NumericUpDown compressionLevelNumericUpDown;
+        private CheckBox vertecColorCheckBox;
 
         public ExportOptionsDialog()
         {
@@ -42,42 +40,15 @@ namespace GltfAttributesExporter.Export
             mainPanel.Controls.Add(groupByLayerCheckBox, 0, 0);
             mainPanel.SetColumnSpan(groupByLayerCheckBox, 2);
 
-            useDracoCompressionCheckBox = new CheckBox
+            vertecColorCheckBox = new CheckBox
             {
-                Text = "Use Draco Compression",
+                Text = "Export VertexColor",
                 Anchor = AnchorStyles.Left,
                 Checked = false,
                 AutoSize = true
             };
-            mainPanel.Controls.Add(useDracoCompressionCheckBox, 0, 1);
-            mainPanel.SetColumnSpan(useDracoCompressionCheckBox, 2);
-
-            var compressionLevelLabel = new Label
-            {
-                Text = "Compression Level:",
-                Anchor = AnchorStyles.Left,
-                TextAlign = ContentAlignment.MiddleLeft,
-                AutoSize = true,
-                Width = 150 // ラベルの幅を設定
-            };
-            mainPanel.Controls.Add(compressionLevelLabel, 0, 2);
-
-            compressionLevelNumericUpDown = new NumericUpDown
-            {
-                Minimum = 0,
-                Maximum = 10,
-                Value = 5,
-                Enabled = false,
-                Anchor = AnchorStyles.Left,
-                Width = 80,
-                AutoSize = true
-            };
-            mainPanel.Controls.Add(compressionLevelNumericUpDown, 1, 2);
-
-            useDracoCompressionCheckBox.CheckedChanged += (sender, e) =>
-            {
-                compressionLevelNumericUpDown.Enabled = useDracoCompressionCheckBox.Checked;
-            };
+            mainPanel.Controls.Add(vertecColorCheckBox, 0, 1);
+            mainPanel.SetColumnSpan(vertecColorCheckBox, 2);
 
             var buttonPanel = new FlowLayoutPanel
             {
@@ -119,8 +90,7 @@ namespace GltfAttributesExporter.Export
             if (DialogResult == DialogResult.OK)
             {
                 GroupByLayer = groupByLayerCheckBox.Checked;
-                UseDracoCompression = useDracoCompressionCheckBox.Checked;
-                CompressionLevel = (int)compressionLevelNumericUpDown.Value;
+                VertexColorExport = vertecColorCheckBox.Checked;
             }
         }
     }

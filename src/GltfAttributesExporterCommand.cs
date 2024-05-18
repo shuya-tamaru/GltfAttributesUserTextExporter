@@ -14,7 +14,6 @@ using SharpGLTF.Geometry;
 using SharpGLTF.Materials;
 using SharpGLTF.Scenes;
 
-using GltfAttributesExporter.Export;
 using GltfAttributesExporter.Utilities;
 using GltfAttributesExporter.Models;
 
@@ -47,7 +46,9 @@ namespace GltfAttributesExporter
         {
 
             // select objects
-            var selectedGeometries = ObjectSelector.SelectObjects("Select objects to mesh");
+            var selectResult= ObjectSelector.SelectObjects("Select objects to mesh");
+            var selectedGeometries = selectResult.Geometry;
+            bool groupByLayer= selectResult.GroupByLayer;
 
             // save file dialog
             var saveFileDialog = new SaveFileDialog
@@ -63,18 +64,14 @@ namespace GltfAttributesExporter
 
             var saveFilePath = saveFileDialog.FileName;
 
-            // show dialog
-            var optionsDialog = new ExportOptionsDialog();
-            if (optionsDialog.ShowDialog() != DialogResult.OK)
-            {
-                return Result.Cancel;
-            }
+            //// show dialog
+            //var optionsDialog = new ExportOptionsDialog();
+            //if (optionsDialog.ShowDialog() != DialogResult.OK)
+            //{
+            //    return Result.Cancel;
+            //}
 
-            bool groupByLayer = optionsDialog.GroupByLayer;
-            bool useDracoCompression = optionsDialog.UseDracoCompression;
-            int compressionLevel = optionsDialog.CompressionLevel;
-
-            Rhino.RhinoApp.WriteLine("Please waiting...");
+            RhinoApp.WriteLine("Please waiting...");
 
             // compile mesh data
             var meshData = new List<MeshData>();
@@ -82,7 +79,6 @@ namespace GltfAttributesExporter
             {
                 try
                 {
-
                     // Convert Brep to Mesh
                     RHINOMESH mesh = null;
                     if (objRef.Mesh() != null)
@@ -110,7 +106,7 @@ namespace GltfAttributesExporter
 
                     if (mesh == null || !mesh.IsValid)
                     {
-                        Rhino.RhinoApp.WriteLine("This object is not a valid mesh or brep: guid =>" + objRef.ObjectId.ToString());
+                        RhinoApp.WriteLine("This object is not a valid mesh or brep: guid =>" + objRef.ObjectId.ToString());
                         continue;
                     }
 
@@ -248,8 +244,8 @@ namespace GltfAttributesExporter
                 RhinoApp.WriteLine("Unsupported file format.");
                 return Result.Cancel;
             }
-            Rhino.RhinoApp.WriteLine("Exported to: " + saveFilePath);
 
+            RhinoApp.WriteLine("Exported to: " + saveFilePath);
 
             return Result.Success;
         }

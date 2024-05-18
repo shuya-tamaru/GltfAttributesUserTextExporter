@@ -3,11 +3,22 @@
 GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your models in gltf/glb format while including user text attributes assigned to the Geometry.
 
 ## :information_source: Features
-
+### :satisfied: **Support**
 - 🎨 **Export models from Rhinoceros in gltf/glb format.**
 - 🏷️ **Include user text attributes assigned to the Geometry in the export.**
-- 🗜️ **Supports Draco compression for efficient file sizes.**
 - 🖼️ **Export textures along with the models.**
+
+### :confounded: **Not Support**
+- :x: **Draco compression.**
+- :x: **Export Point Cloud.**
+- :x: **Export VertexColor.**
+
+### :sunglasses: **Check** 
+- If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, we found that some of them may cause attribute loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
+
+Sample Code Repository 🚀
+
+
 
 ## :arrow_down_small: Installation
 
@@ -28,7 +39,7 @@ The plugin has been tested and confirmed to work with:
 4. Your model will be exported in gltf/glb format with all user text attributes included.
 
 ## :cinema: Viewing Exported Models
-#### You can check the exported models using the following viewers:
+ You can check the exported models using the following viewers:
 
 - Link to the viewer: [Three.js (React Three Fiber) Viewer](https://threejs.org/editor/)
 

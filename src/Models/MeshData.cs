@@ -18,7 +18,6 @@ namespace GltfAttributesExporter.Models
             Mesh = mesh;
             UserAttributes = userAttributes;
             RhinoMaterial = rhinoMaterial;
-            LayerIndex = layerIndex;
-        }
+            LayerIndex = layerIndex;        }
     }
 }
