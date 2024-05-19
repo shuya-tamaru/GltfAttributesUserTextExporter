@@ -1,6 +1,6 @@
 ﻿# 🏷️ GLTFAttributesUserTextExporter for Rhino
 
-GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your models in gltf/glb format while including user text attributes assigned to the Geometry.
+GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your models in gltf/glb format while including attributes user text assigned to the Geometry.
 
 ## :information_source: Features
 ### :satisfied: **Support**
@@ -15,7 +15,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 - :x: **Export VertexColor.**
 
 ### :sunglasses: **Note** 
-- If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, we found that some of them may cause attribute user text loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes user text. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
+- If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, I found that some of them may cause attribute user text loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes user text. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
 
    => [Sample Code Draco Compression using gltf-pipeline](https://github.com/shuya-tamaru/gltf-draco-compression) 🚀
 
