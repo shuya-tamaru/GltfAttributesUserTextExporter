@@ -135,8 +135,6 @@ namespace GltfAttributesExporter
                         {
                             value = RhinoApp.ParseTextField(value, objRef.Object(), null);
                         }
-
-                        RhinoApp.WriteLine("key: " + key + " value: " + value); 
                         
                         userAttributes.Add(new UserAttribute { key = key, value = value });
    

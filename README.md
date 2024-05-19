@@ -1,11 +1,11 @@
-﻿# 🏷️ GLTFAttributesExporter for Rhino
+﻿# 🏷️ GLTFAttributesUserTextExporter for Rhino
 
 GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your models in gltf/glb format while including user text attributes assigned to the Geometry.
 
 ## :information_source: Features
 ### :satisfied: **Support**
 - 🎨 **Export models from Rhinoceros in gltf/glb format.**
-- 🏷️ **Include user text attributes assigned to the Geometry in the export.**
+- 🏷️ **Include attributes user text assigned to the Geometry in the export.**
 - 🖼️ **Export textures along with the models.**
 
 ### :confounded: **Not Support**
@@ -14,7 +14,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 - :x: **Export VertexColor.**
 
 ### :sunglasses: **Note** 
-- If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, we found that some of them may cause attribute loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
+- If you want to apply Draco compression to the model exported using this plugin, please use [gltf-pipeline](https://github.com/CesiumGS/gltf-pipeline). After reviewing various tools, we found that some of them may cause attribute user text loss when applying Draco compression. It has been confirmed that gltf-pipeline can apply Draco compression while retaining attributes user text. I have created a sample code for applying Draco compression using gltf-pipeline, so if necessary, please refer to the repository below.
 
    => [Sample Code Draco Compression using gltf-pipeline](https://github.com/shuya-tamaru/gltf-draco-compression) 🚀
 
@@ -47,12 +47,11 @@ You can check the exported models using the following viewers:
 [![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
 
  ### :one: Three.js (React Three Fiber) Viewer
-- Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute information assigned to each geometry in Rhinoceros.
-- For example, if you export a building model and want to enable a walkthrough in this viewer, set the attribute `key = isWalking` and `value = true` to the geometry you want to walk through in Rhinoceros. This will allow you to walk through that object in the viewer.
+- Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
 
 ### :two: Babylon.js Viewer
 - This viewer allows you to view the model using an orbit camera.
-- Each Mesh's `Metadata` contains the attribute information assigned in Rhinoceros.
+- Each Mesh's `Metadata` contains the attribute user text assigned in Rhinoceros.
 
 ### :three: PlayCanvas Viewer
 - [Details to be added later.]
@@ -79,6 +78,6 @@ or contact at ↓
 
 <div align="center">
 
-## :sun_with_face: Enjoy using GLTFAttributeExporter ! :full_moon_with_face:
+## :sun_with_face: Enjoy using GLTFAttributesUserTextExporter ! :full_moon_with_face:
 </div>
 
