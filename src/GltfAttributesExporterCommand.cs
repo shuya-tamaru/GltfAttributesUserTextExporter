@@ -19,7 +19,6 @@ using GltfAttributesExporter.Models;
 
 using System.Numerics;
 using System.Text.Json.Nodes;
-using System.Collections;
 
 namespace GltfAttributesExporter
 {

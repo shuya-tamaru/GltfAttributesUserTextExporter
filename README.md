@@ -49,23 +49,24 @@ You can check the exported models using the following viewers:
 
  ### :one: Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
-
+  
+  => [Three.js (React Three Fiber) Viewer](#) 🚀
 ### :two: Babylon.js Viewer
-- This viewer allows you to view the model using an orbit camera.
-- Each Mesh's `Metadata` contains the attribute user text assigned in Rhinoceros.
+- Each Mesh's `Metadata` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
+  
+  => [Babylon.js Viewer](#) 🚀
 
 ### :three: PlayCanvas Viewer
-- [Details to be added later.]
+- Coming soon...
+  
+  => [PlayCanvas Viewer](#) 🚀
 
-### :eyes:For All Viewers
-- You can use the `developer tools` to check the loaded model in the console for all viewers.
 
----
+<div align="center">
 
-Links to the viewers:
-- [Three.js (React Three Fiber) Viewer](#)
-- [Babylon.js Viewer](#)
-- [PlayCanvas Viewer](#)
+ #### For All Viewers You can use the `developer tools` to check the loaded model in the console for all viewers.
+</div>
+
 
 ## :arrow_down: Contact
 
