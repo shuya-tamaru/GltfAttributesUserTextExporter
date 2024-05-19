@@ -42,10 +42,10 @@ The plugin has been tested and confirmed to work with:
 ## 🎦 Viewing Exported Models
 You can check the exported models using the following viewers:
 
-[![](https://img.shields.io/badge/-Three.js-ffffff.svg?logo=threedotjs&logoColor=000000)](https://your-threejs-viewer-link.com)
-[![](https://img.shields.io/badge/-ReactThreeFiber-444444.svg?logo=react)](https://your-threejs-viewer-link.com)
-[![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://github.com/playcanvas/engine)
-[![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://github.com/playcanvas/engine)  
+[![](https://img.shields.io/badge/-Three.js-ffffff.svg?logo=threedotjs&logoColor=000000)](https://threejs.org/)
+[![](https://img.shields.io/badge/-ReactThreeFiber-444444.svg?logo=react)](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction)
+[![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://doc.babylonjs.com/)
+[![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://playcanvas.com/)  
 
  ### :one: Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
