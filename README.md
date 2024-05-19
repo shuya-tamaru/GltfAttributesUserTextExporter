@@ -64,7 +64,7 @@ You can check the exported models using the following viewers:
 
 <div align="center">
 
- #### For All Viewers You can use the `developer tools` to check the loaded model in the console for all viewers.
+ ### :bulb:For All Viewers You can use the `developer tools` to check the loaded model in the console for all viewers.
 </div>
 
 
