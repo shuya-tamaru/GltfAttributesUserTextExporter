@@ -19,6 +19,7 @@ using GltfAttributesExporter.Models;
 
 using System.Numerics;
 using System.Text.Json.Nodes;
+using System.Collections;
 
 namespace GltfAttributesExporter
 {
@@ -63,13 +64,6 @@ namespace GltfAttributesExporter
             }
 
             var saveFilePath = saveFileDialog.FileName;
-
-            //// show dialog
-            //var optionsDialog = new ExportOptionsDialog();
-            //if (optionsDialog.ShowDialog() != DialogResult.OK)
-            //{
-            //    return Result.Cancel;
-            //}
 
             RhinoApp.WriteLine("Please waiting...");
 
@@ -135,7 +129,17 @@ namespace GltfAttributesExporter
                     foreach (string key in keys)
                     {
                         var value = attributes.GetUserString(key);
+                        var isTextField = UserAttribute.ContainsTextFieldFormat(value);
+
+                        if (isTextField)
+                        {
+                            value = RhinoApp.ParseTextField(value, objRef.Object(), null);
+                        }
+
+                        RhinoApp.WriteLine("key: " + key + " value: " + value); 
+                        
                         userAttributes.Add(new UserAttribute { key = key, value = value });
+   
                     }
 
                     //Add MeshWithUserData to list
