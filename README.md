@@ -47,16 +47,16 @@ You can check the exported models using the following viewers:
 [![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://doc.babylonjs.com/)
 [![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://playcanvas.com/)  
 
- ### :one: Three.js (React Three Fiber) Viewer
+ ### 1. Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
   
   => [Three.js (React Three Fiber) Viewer](#) 🚀
-### :two: Babylon.js Viewer
+### 2. Babylon.js Viewer
 - Each Mesh's `Metadata` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
   
   => [Babylon.js Viewer](#) 🚀
 
-### :three: PlayCanvas Viewer
+### 3. PlayCanvas Viewer
 - Coming soon...
   
   => [PlayCanvas Viewer](#) 🚀
