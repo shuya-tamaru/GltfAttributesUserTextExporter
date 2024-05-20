@@ -80,6 +80,6 @@ or contact at ↓
 
 <div align="center">
 
-## :sun_with_face: Enjoy using GLTFAttributesUserTextExporter ! :full_moon_with_face:
+## :tada: Enjoy using GLTFAttributesUserTextExporter ! :tada:
 </div>
 
