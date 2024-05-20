@@ -68,7 +68,7 @@ You can check the exported models using the following viewers:
 </div>
 
 
-## :arrow_down: Contact
+## :arrow_down_small: Contact
 
 For any questions or support, please open an issue on GitHub 
 
