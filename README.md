@@ -49,6 +49,7 @@ You can check the exported models using the following viewers:
 
  ### 1. Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
+- If you want to perform a walkthrough inside the model (for example, if the model is a building), please set the UserText for the geometry you want to walk on in Rhinoceros with key = "isWalking" and value = "true".
   
   => [Three.js (React Three Fiber) Viewer](#) 🚀
 ### 2. Babylon.js Viewer
