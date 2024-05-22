@@ -214,8 +214,13 @@ namespace GltfAttributesExporter
                 {
                     // Find or create node for the layer
                     var layer = doc.Layers[layerIndex];
-                    var node =LayerNodeHelper.GetOrCreateLayerNode(sceneBuilder, layer);
-                    sceneBuilder.AddRigidMesh(meshBuilder, node, Matrix4x4.Identity);
+                    var layerNode = LayerNodeHelper.GetOrCreateLayerNode(sceneBuilder, layer);
+                    var meshNode = new NodeBuilder();
+                    layerNode.AddNode(meshNode);
+
+
+                    //var node =LayerNodeHelper.GetOrCreateLayerNode(sceneBuilder, layer);
+                    sceneBuilder.AddRigidMesh(meshBuilder, meshNode, Matrix4x4.Identity);
                 }
                 else
                 {
