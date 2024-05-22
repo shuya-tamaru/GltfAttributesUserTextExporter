@@ -47,16 +47,17 @@ You can check the exported models using the following viewers:
 [![](https://img.shields.io/badge/-Babylon.js-DC3D24.svg?logo=Babylon)](https://doc.babylonjs.com/)
 [![](https://img.shields.io/badge/-PlayCanvas-182326.svg?logo=playcanvas)](https://playcanvas.com/)  
 
- ### :one: Three.js (React Three Fiber) Viewer
+ ### 1. Three.js (React Three Fiber) Viewer
 - Each Mesh's `UserData` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
+- If you want to perform a walkthrough inside the model (for example, if the model is a building), please set the UserText for the geometry you want to walk on in Rhinoceros with key = "isWalking" and value = "true".
   
   => [Three.js (React Three Fiber) Viewer](#) 🚀
-### :two: Babylon.js Viewer
+### 2. Babylon.js Viewer
 - Each Mesh's `Metadata` contains `gltf/glb` extras, which are the attribute user text assigned to each geometry in Rhinoceros.
   
   => [Babylon.js Viewer](#) 🚀
 
-### :three: PlayCanvas Viewer
+### 3. PlayCanvas Viewer
 - Coming soon...
   
   => [PlayCanvas Viewer](#) 🚀
@@ -68,7 +69,7 @@ You can check the exported models using the following viewers:
 </div>
 
 
-## :arrow_down: Contact
+## :arrow_down_small: Contact
 
 For any questions or support, please open an issue on GitHub 
 
@@ -80,6 +81,6 @@ or contact at ↓
 
 <div align="center">
 
-## :sun_with_face: Enjoy using GLTFAttributesUserTextExporter ! :full_moon_with_face:
+## :tada: Enjoy using GLTFAttributesUserTextExporter ! :tada:
 </div>
 
