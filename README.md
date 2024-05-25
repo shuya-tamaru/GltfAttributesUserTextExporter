@@ -79,6 +79,9 @@ or contact at ↓
 
 [![X](https://img.shields.io/badge/Follow_@tama20013_-shuya_tamaru-0000FF.svg?style=flat-square&logo=x&logoColor=white)](https://twitter.com/tama20013)
 
+## :record_button: License
+This project is licensed under the MIT License. For more details, please see the [LICENSE file](https://github.com/shuya-tamaru/GltfAttributesUserTextExporter?tab=License-1-ov-file).
+
 ---
 
 <div align="center">
