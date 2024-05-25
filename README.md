@@ -6,7 +6,6 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 ### :satisfied: **Support**
 - 🎨 **Export models from Rhinoceros in gltf/glb format.**
 - 🏷️ **Include attributes user text assigned to the Geometry in the export.**
-- 🖼️ **Export textures along with the models.**
 - 🗂️ **Choose to export the models with layers as separate nodes in the glTF file, or export all models in a flat array without layer separation.**
 
 ### :confounded: **Not Support**
@@ -25,6 +24,11 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 
 - :rhinoceros: You can install the plugin from  [food4Rhino](https://www.food4rhino.com) .
 
+## :fast_forward: Quick Start
+ 🎥 Watch the Quick Start Video
+ 
+ [![Watch the video](https://img.youtube.com/vi/Q84kZ2kmhfA/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q84kZ2kmhfA)
+ 
 ## :arrows_clockwise: Compatibility
 
 The plugin has been tested and confirmed to work with:
