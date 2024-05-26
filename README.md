@@ -22,7 +22,33 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 
 ## :arrow_down_small: Installation
 
-- :rhinoceros: You can install the plugin from  [food4Rhino](https://www.food4rhino.com) .
+1. **Download**:
+   - Visit the [releases page](https://github.com/shuya-tamaru/GltfAttributesUserTextExporter/releases) of this repository.
+   - Download the latest release file named `v1.0.0 GltfAttributesUserTextExporter.zip`.
+
+2. **Extract**:
+   - Unzip the downloaded `v1.0.0 GltfAttributesUserTextExporter.zip` file.
+
+3. **Copy to Plugins Folder**:
+   - Copy the extracted `GLTFAttributesUserTextExporter.rhp` file to the Rhinoceros plugins folder.
+     - For Rhino 7: `C:\Users\<YourUsername>\AppData\Roaming\McNeel\Rhinoceros\7.0\Plug-ins\`
+     - For Rhino 8: `C:\Users\<YourUsername>\AppData\Roaming\McNeel\Rhinoceros\8.0\Plug-ins\`
+
+4. **Install in Rhinoceros**:
+   - Open Rhinoceros.
+   - Go to `Tools` -> `Options` -> `Plugins`.
+   - Click on `Install` at the bottom of the window.
+   - Browse to the `GLTFAttributesUserTextExporter.rhp` file in the plugins folder and select it.
+   - Confirm the installation by clicking "Open".
+
+5. **Enable the Plugin**:
+   - Ensure that `GLTFAttributesUserTextExporter` is listed and enabled in the installed plugins list. If it is not enabled, check the box to enable it.
+
+6. **Usage**:
+   - Load the model you want to export in Rhinoceros.
+   - Type `GltfAttributesExport` in the command line and press Enter.
+   - Your model will be exported in gltf/glb format with all user text attributes included.
+
 
 ## :fast_forward: Quick Start
  🎥 Watch the Quick Start Video

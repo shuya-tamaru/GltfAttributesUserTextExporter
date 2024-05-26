@@ -20,7 +20,6 @@
     <PackageReference Include="RhinoCommon" Version="8.6.24101.5001" IncludeAssets="compile;build" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
-    <PackageReference Include="WebAssembly.Bindings" Version="3.0.2" />
   </ItemGroup>
   
 </Project>
