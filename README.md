@@ -53,7 +53,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 ## :fast_forward: Quick Start
  🎥 Watch the Quick Start Video
  
- [![Watch the video](https://img.youtube.com/vi/Q84kZ2kmhfA/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q84kZ2kmhfA)
+ [![Watch the video](https://img.youtube.com/vi/QARcmx5jKZk/maxresdefault.jpg)](https://www.youtube.com/watch?v=QARcmx5jKZk)
  
 ## :arrows_clockwise: Compatibility
 
