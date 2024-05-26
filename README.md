@@ -63,10 +63,9 @@ The plugin has been tested and confirmed to work with:
 
 ## :record_button: Usage
 
-1. Install the plugin from food4Rhino.
-2. Open Rhinoceros and load your model.
-3. In Rhinoceros, enter the command `GltfAttributesExport`.
-4. Your model will be exported in gltf/glb format with all user text attributes included.
+1. Open Rhinoceros and load your model.
+2. In Rhinoceros, enter the command `GltfAttributesExport`.
+3. Your model will be exported in gltf/glb format with all user text attributes included.
 
 ## 🎦 Viewing Exported Models
 You can check the exported models using the following viewers:
