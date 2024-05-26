@@ -46,7 +46,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 6. **Usage**:
    - Load the model you want to export in Rhinoceros.
    - Type `GltfAttributesExport` in the command line and press Enter.
-   - Your model will be exported in gltf/glb format with all user text attributes included.
+   - Your model will be exported in gltf/glb format with all attributes user text included.
 
 
 ## :fast_forward: Quick Start
