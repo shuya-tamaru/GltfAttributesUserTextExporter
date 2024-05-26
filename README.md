@@ -30,7 +30,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
    - Unzip the downloaded `v1.0.0 GltfAttributesUserTextExporter.zip` file.
 
 3. **Copy to Plugins Folder**:
-   - Copy the extracted `Unzip　folder` file to the Rhinoceros plugins folder.
+   - Copy the extracted `unziped　folder` to the Rhinoceros plugins folder.
      - For Rhino 7: `C:\Users\<YourUsername>\AppData\Roaming\McNeel\Rhinoceros\7.0\Plug-ins\`
      - For Rhino 8: `C:\Users\<YourUsername>\AppData\Roaming\McNeel\Rhinoceros\8.0\Plug-ins\`
 
