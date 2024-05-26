@@ -1,4 +1,4 @@
-﻿# 🏷️ GLTFAttributesUserTextExporter for Rhino
+﻿# 🏷️ GLTFAttributesUserTextExporter for Rhino　(beta)
 
 GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your models in gltf/glb format while including attributes user text assigned to the Geometry.
 
