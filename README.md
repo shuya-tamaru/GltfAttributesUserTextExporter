@@ -39,7 +39,6 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
    - Go to `Tools` -> `Options` -> `Plugins`.
    - Click on `Install` at the bottom of the window.
    - Browse to the `GLTFAttributesUserTextExporter.rhp` file in the plugins folder and select it.
-   - Confirm the installation by clicking "Open".
 
 5. **Enable the Plugin**:
    - Ensure that `GLTFAttributesUserTextExporter` is listed and enabled in the installed plugins list. If it is not enabled, check the box to enable it.
