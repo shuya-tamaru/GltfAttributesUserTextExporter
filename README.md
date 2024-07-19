@@ -59,7 +59,7 @@ GLTFAttributeExporter is a plugin for Rhinoceros that allows you to export your 
 The plugin has been tested and confirmed to work with:
 
 - 🖥️ **Windows Rhino 7**
-- 🖥️ **Windows Rhino 8**
+- 🖥️ **Windows Rhino 8** (Note: To run this plugin in Rhino 8, you need to switch the runtime to .NET Framework by executing the 'SetDotNetRuntime' command in Rhino.)
 
 ## :record_button: Usage
 
