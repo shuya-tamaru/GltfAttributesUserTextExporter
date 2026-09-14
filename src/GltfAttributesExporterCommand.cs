@@ -47,6 +47,10 @@ namespace GltfAttributesExporter
 
             // select objects
             var selectResult= ObjectSelector.SelectObjects("Select objects to mesh");
+            if (selectResult == null || selectResult.Geometry == null)
+            {
+                return Result.Cancel;
+            }
             var selectedGeometries = selectResult.Geometry;
             bool groupByLayer= selectResult.GroupByLayer;
 
@@ -72,11 +76,13 @@ namespace GltfAttributesExporter
             {
                 try
                 {
-                    // Convert Brep to Mesh
+                    // Convert Brep to Mesh. Work on a copy so export-time UV baking,
+                    // triangulation and unit scaling never mutate the document mesh.
                     RHINOMESH mesh = null;
-                    if (objRef.Mesh() != null)
+                    var sourceMesh = objRef.Mesh();
+                    if (sourceMesh != null)
                     {
-                        mesh = objRef.Mesh();
+                        mesh = sourceMesh.DuplicateMesh();
                     }
                     else if (objRef.Brep() != null)
                     {
@@ -120,6 +126,13 @@ namespace GltfAttributesExporter
                             rhinoMaterial = doc.Materials[layer.RenderMaterialIndex];
                         }
                     }
+
+                    // Rhino object-level Box/Planar/Cylindrical/etc. mappings are not
+                    // guaranteed to exist in Mesh.TextureCoordinates. The original exporter
+                    // only serializes Mesh.TextureCoordinates, which can collapse the GLB UVs
+                    // to VertexUtility's fallback (0,0). Bake the active Rhino mapping into
+                    // explicit per-vertex UVs before unit scaling and SharpGLTF serialization.
+                    BakeObjectTextureMappingToMesh(objRef.Object(), rhinoMaterial, mesh);
 
                     // Get UserAttributes
                     var userAttributes = new List<UserAttribute>();
@@ -254,6 +267,135 @@ namespace GltfAttributesExporter
             RhinoApp.WriteLine("Exported to: " + saveFilePath);
 
             return Result.Success;
+        }
+
+        /// <summary>
+        /// Bake Rhino object-level texture mapping into Mesh.TextureCoordinates (glTF TEXCOORD_0).
+        /// Priority: material bitmap channel -> channel 1 -> any other object mapping channels.
+        /// Existing mesh UVs are preserved when no object mapping can be resolved.
+        /// </summary>
+        private static bool BakeObjectTextureMappingToMesh(
+            RhinoObject rhinoObject,
+            Material rhinoMaterial,
+            RHINOMESH mesh)
+        {
+            if (rhinoObject == null || mesh == null) return false;
+
+            var channels = new List<int>();
+
+            // Prefer the mapping channel explicitly requested by the bitmap texture.
+            try
+            {
+                var bitmapTexture = rhinoMaterial?.GetBitmapTexture();
+                if (bitmapTexture != null && bitmapTexture.MappingChannelId > 0)
+                {
+                    AddUnique(channels, bitmapTexture.MappingChannelId);
+                }
+            }
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Could not inspect bitmap mapping channel: " + ex.Message);
+            }
+
+            // Channel 1 is Rhino's conventional primary texture mapping channel.
+            AddUnique(channels, 1);
+
+            // Fall back to any other mappings attached to the object.
+            try
+            {
+                var objectChannels = rhinoObject.GetTextureChannels();
+                if (objectChannels != null)
+                {
+                    foreach (var channel in objectChannels)
+                    {
+                        if (channel > 0) AddUnique(channels, channel);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Could not inspect object texture channels: " + ex.Message);
+            }
+
+            if (mesh.Normals.Count != mesh.Vertices.Count)
+            {
+                mesh.Normals.ComputeNormals();
+            }
+
+            foreach (var channel in channels)
+            {
+                try
+                {
+                    Transform objectTransform;
+                    var mapping = rhinoObject.GetTextureMapping(channel, out objectTransform);
+                    if (mapping == null) continue;
+
+                    // lazy=false: compute immediately. seamCheck=true: allow Rhino to
+                    // handle discontinuities needed by box/cylinder/sphere mappings.
+                    mesh.SetTextureCoordinates(mapping, objectTransform, false, true);
+
+                    if (HasPerVertexUv(mesh))
+                    {
+                        RhinoApp.WriteLine(
+                            "UV baked: object=" + rhinoObject.Id +
+                            ", channel=" + channel +
+                            ", mapping=" + mapping.MappingType +
+                            ", vertices=" + mesh.Vertices.Count +
+                            ", uv=" + mesh.TextureCoordinates.Count +
+                            (IsUvDegenerate(mesh) ? " [WARNING: degenerate UV range]" : ""));
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    RhinoApp.WriteLine(
+                        "UV bake failed: object=" + rhinoObject.Id +
+                        ", channel=" + channel +
+                        ", error=" + ex.Message);
+                }
+            }
+
+            if (HasPerVertexUv(mesh))
+            {
+                RhinoApp.WriteLine(
+                    "No object mapping resolved; preserving existing mesh UVs: object=" + rhinoObject.Id +
+                    (IsUvDegenerate(mesh) ? " [WARNING: degenerate UV range]" : ""));
+                return true;
+            }
+
+            RhinoApp.WriteLine(
+                "No usable UVs found: object=" + rhinoObject.Id +
+                ". VertexUtility will use its (0,0) fallback.");
+            return false;
+        }
+
+        private static void AddUnique(List<int> channels, int channel)
+        {
+            if (!channels.Contains(channel)) channels.Add(channel);
+        }
+
+        private static bool HasPerVertexUv(RHINOMESH mesh)
+        {
+            return mesh != null &&
+                   mesh.Vertices.Count > 0 &&
+                   mesh.TextureCoordinates.Count == mesh.Vertices.Count;
+        }
+
+        private static bool IsUvDegenerate(RHINOMESH mesh)
+        {
+            if (!HasPerVertexUv(mesh) || mesh.TextureCoordinates.Count < 2) return true;
+
+            var first = mesh.TextureCoordinates[0];
+            const float eps = 1e-6f;
+            for (int i = 1; i < mesh.TextureCoordinates.Count; i++)
+            {
+                var uv = mesh.TextureCoordinates[i];
+                if (Math.Abs(uv.X - first.X) > eps || Math.Abs(uv.Y - first.Y) > eps)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <Version>1.0</Version>
+    <Version>1.0.1</Version>
     <Title>GltfAttributesExporter</Title>
     <Description>Description of GltfAttributesExporter</Description>
     <TargetExt>.rhp</TargetExt>
@@ -20,6 +20,7 @@
     <PackageReference Include="RhinoCommon" Version="8.6.24101.5001" IncludeAssets="compile;build" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.3" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
   </ItemGroup>
   
 </Project>
